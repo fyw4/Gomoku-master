@@ -1,7 +1,7 @@
 /*************************************************************************
 > File Name: my_socket.c
 > Author: CarlSun
-> Mail:sunxiuyang04@gmail.com 
+> Mail:sunxiuyang04@gmail.com
 > Created Time: Sat Aug 20 20:36:03 2016
  ************************************************************************/
 
@@ -18,7 +18,7 @@ void my_socketCli(int *fd_socket,int type,char* ip,int port,SA *my_addr){
 	(*my_addr).sin_port=htons(port);
 	(*my_addr).sin_addr.s_addr=inet_addr(ip);
 	return;
-	
+
 }
 void my_socketSer(int *fd_socket,int type,char* ip,int port){
 	ASSERT(type==MY_TCP || type==MY_UDP,"invalid arg\n");
@@ -56,5 +56,5 @@ void my_close(int fd_socket){
 	close(fd_socket);
 }
 void my_connect(int fd_socket,pSA server_addr,int len){
-	connect(fd_socket,server_addr,len);
+	ASSERT(connect(fd_socket,server_addr,len)!= -1, "connect fail\n");
 }
